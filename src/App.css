@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.App {
+
+}
+
+.panneau {
+  display: flex;
+  flex-flow: row;
+}
+
+.letter {
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: pink;
+}
+
+@media print {
+  .break {
+    page-break-after: always;
+  }
+  .panneau {
+    display: initial;
+  }
+  .letter {
+    font-size: 750px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .no-print {
+    display: none;
+  }
+}
