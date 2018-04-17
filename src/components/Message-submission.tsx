@@ -14,7 +14,7 @@ export class MessageSubmissionComponent extends React.Component<IProps, object> 
     public render() {
         return (
             <div>
-                <p className={'no-print'}>
+                <div className={'no-print'}>
                     Sous Chrome :
                     <ol>
                         <li> On tape le message</li>
@@ -24,7 +24,7 @@ export class MessageSubmissionComponent extends React.Component<IProps, object> 
                         <li> On choisit "Enregistrer au format PDF"</li>
                         <img src="enregistrer.png" style={{width : '415px'}}/>
                     </ol>
-                </p>
+                </div>
                 <form className={'no-print'}>
                     <label>
                         Message :

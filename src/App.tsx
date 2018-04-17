@@ -8,6 +8,8 @@ interface IState {
     message: string[]
 }
 
+const smallLetters = [',', ':', '!', '\''];
+
 class App extends React.Component<{}, IState> {
     constructor(props: {}) {
         super(props);
@@ -16,7 +18,22 @@ class App extends React.Component<{}, IState> {
     }
 
     public onMessageChange(message: string) {
-        this.setState({message: message.split('').map(letter => letter)});
+        const letters = message
+            .split('')
+            .filter(letter => letter !== ' ') // on supprimes les espaces
+            .map(letter => letter.toUpperCase()) // on met tout en majuscule
+            .reduce((acc, value) => {
+                    if (!smallLetters.find(letter => letter === value)) {
+                        return [...acc, value]
+                    } else {
+                        const last = acc.pop();
+                        return [...acc, last + value] // On concatene les petites lettres
+                    }
+                }
+                , [])
+            .reverse();
+
+        this.setState({message: letters});
     }
 
     public render() {
@@ -24,7 +41,7 @@ class App extends React.Component<{}, IState> {
             <div className="App">
                 <MessageSubmissionComponent onMessageChange={this.onMessageChange}/>
                 <div className={'panneau'}>
-                    {this.state.message.map(letter => (<PageComponent letter={letter}/>))}
+                    {this.state.message.map((letter, index) => (<PageComponent key={index} letter={letter} number={index+1}/>))}
                 </div>
             </div>
         );
