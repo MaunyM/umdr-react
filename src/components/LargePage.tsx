@@ -5,7 +5,7 @@ interface IProps {
     number: number;
 }
 
-export const PageComponent = (props: IProps) => {
+export const LargePageComponent = (props: IProps) => {
     return (
         <div className={"page portrait"}>
             <div className={"letter"}>{props.letter}</div>

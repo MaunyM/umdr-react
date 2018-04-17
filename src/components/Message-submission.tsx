@@ -13,25 +13,13 @@ export class MessageSubmissionComponent extends React.Component<IProps, object> 
 
     public render() {
         return (
-            <div>
-                <div className={'no-print'}>
-                    Sous Chrome :
-                    <ol>
-                        <li> On tape le message</li>
-                        <li> Dans le menu, on choisit "Imprimer..."</li>
-                        <li> Puis "Modifier"</li>
-                        <img src="modifier.png" style={{width : '213px'}}/>
-                        <li> On choisit "Enregistrer au format PDF"</li>
-                        <img src="enregistrer.png" style={{width : '415px'}}/>
-                    </ol>
-                </div>
-                <form className={'no-print'}>
-                    <label>
-                        Message :
-                        <textarea name="name" onChange={this.handleChange}/>
-                    </label>
-                </form>
-            </div>)
+            <form className={'no-print'}>
+                <label>
+                    Message :
+                    <textarea name="name" onChange={this.handleChange}/>
+                </label>
+            </form>
+        )
     }
 
     protected handleChange(event: ChangeEvent<HTMLTextAreaElement>) {

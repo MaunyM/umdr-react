@@ -1,11 +1,15 @@
 import * as React from 'react';
 import './App.css';
 
+import {HelpComponent} from './components/Help';
+import {MediumPageComponent} from './components/MediumPage';
 import {MessageSubmissionComponent} from './components/Message-submission';
-import {PageComponent} from './components/Page';
+
+
 
 interface IState {
     message: string[]
+    showHelp : boolean
 }
 
 const smallLetters = [',', ':', '!', '\''];
@@ -13,8 +17,13 @@ const smallLetters = [',', ':', '!', '\''];
 class App extends React.Component<{}, IState> {
     constructor(props: {}) {
         super(props);
-        this.state = {message: []};
+        this.state = {message: [], showHelp: false};
         this.onMessageChange = this.onMessageChange.bind(this);
+        this.clickHelp = this.clickHelp.bind(this);
+    }
+
+    public clickHelp(){
+        this.setState({showHelp: !this.state.showHelp});
     }
 
     public onMessageChange(message: string) {
@@ -39,9 +48,11 @@ class App extends React.Component<{}, IState> {
     public render() {
         return (
             <div className="App">
+                <button onClick={this.clickHelp}>Aide</button>
+                {this.state.showHelp && (<HelpComponent/>)}
                 <MessageSubmissionComponent onMessageChange={this.onMessageChange}/>
                 <div className={'panneau'}>
-                    {this.state.message.map((letter, index) => (<PageComponent key={index} letter={letter} number={index+1}/>))}
+                    {this.state.message.map((letter, index) => (<MediumPageComponent key={index} letter={letter} number={index+1}/>))}
                 </div>
             </div>
         );
