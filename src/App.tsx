@@ -42,12 +42,18 @@ class App extends React.Component<{}, IState> {
             <div className="App">
                 <button className={'no-print'} onClick={this.clickHelp}>Aide</button>
                 {this.state.showHelp && (<HelpComponent/>)}
-                <MessageSubmissionComponent type={this.state.type} onMessageChange={this.onMessageChange} onTypeChange={this.onTypeChange}/>
+                <MessageSubmissionComponent type={this.state.type}
+                                            onMessageChange={this.onMessageChange}
+                                            onTypeChange={this.onTypeChange}/>
                 <div className={'panneau'}>
                     {this.state.type === MessageType.Large && this.toLarge(this.state.message).map((letter, index) => (
-                        <LargePageComponent key={index} letter={letter} number={index + 1}/>))}
+                        <LargePageComponent key={index}
+                                            letter={letter}
+                                            number={this.toLarge(this.state.message).length - index}/>))}
                     {this.state.type === MessageType.Medium && this.toMedium(this.state.message).map((letter, index) => (
-                        <MediumPageComponent key={index} letter={letter} number={index + 1}/>))}
+                        <MediumPageComponent key={index}
+                                             letter={letter}
+                                             number={this.toMedium(this.state.message).length - index}/>))}
                 </div>
             </div>
         );
