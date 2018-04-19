@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-.App {
-
+@font-face {
+  font-family: "Berlin";
+  src: url("BRLNSR.TTF");
 }
 
 .panneau {
@@ -9,7 +10,7 @@
 }
 
 .page {
-  font-family: 'Berlin Sans FB', sans-serif;
+  font-family: 'Berlin', sans-serif;
   text-align: center;
   background-color: pink;
   margin: 1px;
@@ -40,11 +41,9 @@
   .portrait .letter {
     flex-grow: 1;
     font-size: 750px;
-    font-family: 'Berlin Sans FB', sans-serif;
   }
   .landscape .letter {
     font-size: 350px;
-    font-family: 'Berlin Sans FB', sans-serif;
   }
   .landscape .spacer {
     flex-grow: 1;
@@ -54,7 +53,6 @@
     display: initial;
     font-size: 15px;
     min-height: 20px;
-    font-family: 'Berlin Sans FB', sans-serif;
   }
   .portrait {
     width: 190mm;
