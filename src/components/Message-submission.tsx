@@ -4,8 +4,9 @@ import {MessageType} from '../types';
 
 interface IProps {
     type: MessageType
-    onMessageChange: (m: string) => void;
-    onTypeChange: (t: MessageType) => void;
+    index: number
+    onMessageChange: (i: number, m: string) => void;
+    onTypeChange: (i: number, t: MessageType) => void;
 }
 
 export class MessageSubmissionComponent extends React.Component<IProps, object> {
@@ -23,6 +24,7 @@ export class MessageSubmissionComponent extends React.Component<IProps, object> 
                     <textarea name="name" onChange={this.handleChange}/>
                 </label>
                 <select onChange={this.handleTypeChange} value={this.props.type}>
+                    <option value={MessageType.Small}>Small</option>
                     <option value={MessageType.Medium}>Medium</option>
                     <option value={MessageType.Large}>Large</option>
                 </select>
@@ -31,10 +33,10 @@ export class MessageSubmissionComponent extends React.Component<IProps, object> 
     }
 
     protected handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
-        this.props.onMessageChange(event.target.value);
+        this.props.onMessageChange(this.props.index, event.target.value);
     }
 
     protected handleTypeChange(event: ChangeEvent<HTMLSelectElement>) {
-        this.props.onTypeChange(+event.target.value);
+        this.props.onTypeChange(this.props.index, +event.target.value);
     }
 }

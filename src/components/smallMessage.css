@@ -1,0 +1,69 @@
+.small {
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Berlin', sans-serif;
+}
+
+.titre {
+    display: flex;
+    justify-content: center;
+}
+.umdr {
+    font-size: 24px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.expression {
+    margin: 10px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+}
+
+.social img {
+    height: 56px;
+}
+
+.qrcode img {
+    height: 120px;
+}
+
+.message {
+    justify-content: center;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    width: 720px;
+    border: 1px solid black;
+}
+
+.texte {
+    padding: 10px;
+    font-size: 70px;
+    text-align: center;
+}
+
+.auteur {
+    padding: 10px;
+    font-size: 20px;
+    text-align: right;
+}
+
+.liens {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+@media print {
+    .small {
+        background-color: white;
+    }
+}
