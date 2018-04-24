@@ -20,11 +20,11 @@ export class PanneauComponent extends React.Component<IProps> {
                 {this.props.type === MessageType.Large && this.toLarge(this.props.message).map((letter, index) => (
                     <LargePageComponent key={index}
                                         letter={letter}
-                                        number={this.toLarge(this.props.message).length - index}/>))}
+                                        number={index+1}/>))}
                 {this.props.type === MessageType.Medium && this.toMedium(this.props.message).map((letter, index) => (
                     <MediumPageComponent key={index}
                                          letter={letter}
-                                         number={this.toMedium(this.props.message).length - index}/>))}
+                                         number={index+1}/>))}
                 {this.props.type === MessageType.Small && (
                     <div>
                         <SmallMessageComponent
@@ -48,7 +48,6 @@ export class PanneauComponent extends React.Component<IProps> {
                     return [...acc, last + value] // On concatene les petites lettres
                 }
             }, [])
-            .reverse();
     }
 
     protected toMedium(message: string): string[] {
@@ -77,6 +76,5 @@ export class PanneauComponent extends React.Component<IProps> {
                 return [...acc, last];
             }, [[]])
             .map((strings: string[]) => strings.join(''))
-            .reverse();
     }
 }
