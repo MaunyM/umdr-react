@@ -15,7 +15,7 @@ export const SmallMessageComponent = (props: IProps) => {
                 </div>
                 <div className={'message'}>
                     <div className={"texte"}>{props.message}</div>
-                    <div className={"auteur"}>Gerard</div>
+                    <div className={"auteur"}/>
                 </div>
                 <div className={'liens'}>
                     <div className={'social'}>
