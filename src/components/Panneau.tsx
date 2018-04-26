@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {MessageType} from '../types';
+import {Message, MessageType} from '../types';
 
 import {LargePageComponent} from './LargePage';
 import {MediumPageComponent} from './MediumPage';
@@ -9,27 +9,26 @@ import {SmallMessageComponent} from './SmalllMessage';
 const smallLetters = [',', ':', '!', '\''];
 
 interface IProps {
-    message: string;
-    type: MessageType;
+    message: Message;
 }
 
 export class PanneauComponent extends React.Component<IProps> {
     public render() {
         return (
             <div className={"panneau"}>
-                {this.props.type === MessageType.Large && this.toLarge(this.props.message).map((letter, index) => (
+                {this.props.message.type === MessageType.Large && this.toLarge(this.props.message.content).map((letter, index) => (
                     <LargePageComponent key={index}
                                         letter={letter}
                                         number={index+1}/>))}
-                {this.props.type === MessageType.Medium && this.toMedium(this.props.message).map((letter, index) => (
+                {this.props.message.type === MessageType.Medium && this.toMedium(this.props.message.content).map((letter, index) => (
                     <MediumPageComponent key={index}
                                          letter={letter}
                                          number={index+1}/>))}
-                {this.props.type === MessageType.Small && (
+                {this.props.message.type === MessageType.Small && (
                     <div>
                         <SmallMessageComponent
                             message={this.props.message}
-                            number={1}/>
+                        />
                     </div>)}
             </div>)
     }

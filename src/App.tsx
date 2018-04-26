@@ -5,21 +5,19 @@ import {HelpComponent} from './components/Help';
 import {MessageSubmissionComponent} from './components/Message-submission';
 import {PanneauComponent} from './components/Panneau';
 
-import {MessageType} from './types';
+import {Message} from './types';
 
 
 interface IState {
-    messages: string[]
-    types: MessageType[]
+    messages: Message[]
     showHelp: boolean
 }
 
 class App extends React.Component<{}, IState> {
     constructor(props: {}) {
         super(props);
-        this.state = {messages: [''], types: [MessageType.Large], showHelp: false};
+        this.state = {messages: [new Message()], showHelp: false};
         this.onMessageChange = this.onMessageChange.bind(this);
-        this.onTypeChange = this.onTypeChange.bind(this);
         this.clickHelp = this.clickHelp.bind(this);
         this.onNewMessage = this.onNewMessage.bind(this);
     }
@@ -28,16 +26,12 @@ class App extends React.Component<{}, IState> {
         this.setState({showHelp: !this.state.showHelp});
     }
 
-    public onMessageChange(index: number, message: string) {
+    public onMessageChange(index: number, message: Message) {
         this.setState({messages: [...this.state.messages.slice(0, index), message, ...this.state.messages.slice(index + 1)]});
     }
 
-    public onTypeChange(index: number, type: MessageType) {
-        this.setState({types: [...this.state.types.slice(0, index), type, ...this.state.types.slice(index + 1)]});
-    }
-
     public onNewMessage() {
-        this.setState({messages: [...this.state.messages, ''], types: [...this.state.types, MessageType.Large]})
+        this.setState({messages: [...this.state.messages, new Message()]});
     }
 
     public render() {
@@ -46,14 +40,14 @@ class App extends React.Component<{}, IState> {
                 <button className={'no-print'} onClick={this.clickHelp}>Aide</button>
                 {this.state.showHelp && (<HelpComponent/>)}
                 {this.state.messages.map((message, index) => (
-                    <MessageSubmissionComponent type={this.state.types[index]}
+                    <MessageSubmissionComponent message={this.state.messages[index]}
                                                 index={index}
                                                 onMessageChange={this.onMessageChange}
-                                                onTypeChange={this.onTypeChange}/>
+                    />
                 ))}
-                <button onClick={this.onNewMessage} className={'no-print'} >Nouveau message</button>
+                <button onClick={this.onNewMessage} className={'no-print'}>Nouveau message</button>
                 {this.state.messages.map((message, index) => (
-                    <PanneauComponent message={message} type={this.state.types[index]}/>
+                    <PanneauComponent message={message}/>
                 ))}
             </div>
         );

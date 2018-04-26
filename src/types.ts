@@ -3,3 +3,9 @@ export enum MessageType {
     Medium,
     Large
 }
+
+export class Message {
+    public content: string = '';
+    public type: MessageType = MessageType.Large;
+    public author?: string;
+}
