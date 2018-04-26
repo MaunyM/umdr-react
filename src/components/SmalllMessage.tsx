@@ -12,7 +12,7 @@ export const SmallMessageComponent = (props: IProps) => {
     return (
         <div className={'small'}>
             <div className={'titre'}>
-                <span className={'expression'}>Panneau d'expression libre</span>
+                <span className={'expression'}>Affichage d'opinion</span>
             </div>
             <div className={'message'}>
                 <div className={'texte'}>{props.message.content}</div>
