@@ -8,14 +8,24 @@ interface IProps {
     message: Message;
 }
 
+const texteClass = (content: string) => {
+    if(content.length > 130) {
+        return 'small'
+    }
+    if(content.length > 58) {
+        return 'medium'
+    }
+    return 'big'
+};
+
 export const SmallMessageComponent = (props: IProps) => {
     return (
         <div className={'small'}>
-            <div className={'titre'}>
+            <div className={`titre`}>
                 <span className={'expression'}>Affichage d'opinion</span>
             </div>
             <div className={'message'}>
-                <div className={'texte'}>{props.message.content}</div>
+                <div className={`texte ${texteClass(props.message.content)}`}>{props.message.content}</div>
                 <div className={'auteur'}>{props.message.author}</div>
             </div>
             <div className={'liens'}>
