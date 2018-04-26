@@ -34,6 +34,7 @@
   }
 
   .landscape.page {
+    text-align: left;
     display: flex;
     flex-direction: column;
     margin: 0px;
@@ -41,9 +42,6 @@
   .portrait .letter {
     flex-grow: 1;
     font-size: 750px;
-  }
-  .landscape .letter {
-    font-size: 350px;
   }
   .landscape .spacer {
     flex-grow: 1;

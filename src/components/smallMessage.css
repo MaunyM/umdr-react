@@ -44,9 +44,21 @@
     border: 1px solid black;
 }
 
-.texte {
+.texte.big {
     padding: 10px;
     font-size: 70px;
+    text-align: center;
+}
+
+.texte.medium {
+    padding: 10px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.texte.small {
+    padding: 10px;
+    font-size: 30px;
     text-align: center;
 }
 
