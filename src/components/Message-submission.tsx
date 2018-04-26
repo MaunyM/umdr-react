@@ -29,11 +29,11 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
                     <textarea name="name" onChange={this.handleChange}/>
                 </label>
 
-                <label>
+                {this.state.message.type === MessageType.Small && (<label>
                     Auteur :
                     <textarea name="author" onChange={this.handleAuthorChange}/>
-                </label>
-                     <select onChange={this.handleTypeChange} value={this.props.message.type}>
+                </label>)}
+                <select onChange={this.handleTypeChange} value={this.props.message.type}>
                     <option value={MessageType.Small}>Small</option>
                     <option value={MessageType.Medium}>Medium</option>
                     <option value={MessageType.Large}>Large</option>
