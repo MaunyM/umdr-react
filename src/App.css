@@ -43,6 +43,9 @@
     flex-grow: 1;
     font-size: 750px;
   }
+  .landscape .letter {
+    font-size: 350px;
+  }
   .landscape .spacer {
     flex-grow: 1;
   }
