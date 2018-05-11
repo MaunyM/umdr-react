@@ -15,15 +15,15 @@ interface IProps {
 export class PanneauComponent extends React.Component<IProps> {
     public render() {
         return (
-            <div className={"panneau"}>
+            <div className={'panneau'} style={{fontSize: this.props.message.fontSize}}>
                 {this.props.message.type === MessageType.Large && this.toLarge(this.props.message.content).map((letter, index) => (
                     <LargePageComponent key={index}
                                         letter={letter}
-                                        number={index+1}/>))}
+                                        number={index + 1}/>))}
                 {this.props.message.type === MessageType.Medium && this.toMedium(this.props.message.content).map((letter, index) => (
                     <MediumPageComponent key={index}
                                          letter={letter}
-                                         number={index+1}/>))}
+                                         number={index + 1}/>))}
                 {this.props.message.type === MessageType.Small && (
                     <div>
                         <SmallMessageComponent
@@ -61,10 +61,10 @@ export class PanneauComponent extends React.Component<IProps> {
                     return [...acc, last + value] // On concatene les petites lettres
                 }
             }, [])
-            .reduce((acc: string[][], value) => {
+            .reduce((acc: string[][], value) => { // On regroupe 4 par 4
                 const last = acc.pop();
                 if (last) {
-                    if (last.length === 4) {
+                    if (last.length === 4) { // Si on en a deja 4, on passe au prochain
                         if (value !== ' ') {
                             return [...acc, last, [value]];
                         }

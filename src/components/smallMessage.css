@@ -6,6 +6,7 @@
 }
 
 .titre {
+    font-size: 16px;
     display: flex;
     justify-content: center;
 }
@@ -25,6 +26,7 @@
 .social {
     display: flex;
     align-items: center;
+    font-size: 16px;
 }
 
 .social img {
@@ -44,21 +46,8 @@
     border: 1px solid black;
 }
 
-.texte.big {
+.texte {
     padding: 10px;
-    font-size: 70px;
-    text-align: center;
-}
-
-.texte.medium {
-    padding: 10px;
-    font-size: 50px;
-    text-align: center;
-}
-
-.texte.small {
-    padding: 10px;
-    font-size: 30px;
     text-align: center;
 }
 

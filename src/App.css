@@ -1,82 +1,91 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 @font-face {
-  font-family: "Berlin";
-  src: url("BRLNSR.TTF");
+    font-family: "Berlin";
+    src: url("BRLNSR.TTF");
 }
 
 .panneau {
-  display: flex;
-  flex-flow: row;
+    display: flex;
+    flex-flow: row;
 }
 
 .page {
-  font-family: 'Berlin', sans-serif;
-  text-align: center;
-  background-color: pink;
-  margin: 1px;
+    font-family: 'Berlin', sans-serif;
+    text-align: center;
+    background-color: pink;
+    margin: 1px;
+    font-size: 16px;
 }
 
 .number {
-  display: none;
+    display: none;
 }
 
 @media print {
-  .break {
-    page-break-after: always;
-  }
-  .panneau {
-    display: initial;
-  }
-  .portrait.page {
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-  }
+    .break {
+        page-break-after: always;
+    }
 
-  .landscape.page {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-  }
-  .portrait .letter {
-    flex-grow: 1;
-    font-size: 750px;
-  }
-  .landscape .letter {
-    font-size: 350px;
-  }
-  .landscape .spacer {
-    flex-grow: 1;
-  }
-  .number {
-    align-self: flex-end;
-    display: initial;
-    font-size: 15px;
-    min-height: 20px;
-  }
-  .portrait {
-    width: 190mm;
-    height: 276mm;
-  }
-  .landscape {
-    width: 276mm;
-    height: 188mm;
-  }
-  .no-print {
-    display: none;
-  }
-  body {
-    background: none;
-    -ms-zoom: 1.665;
-  }
-  .portrait, .landscape {
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
-  .landscape {
-    margin-bottom: 10px;
-    transform-origin: 0 0;
-  }
+    .panneau {
+        display: initial;
+    }
+
+    .portrait.page {
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+    }
+
+    .landscape.page {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+    }
+
+    .portrait .letter {
+        flex-grow: 1;
+    }
+
+    .landscape .spacer {
+        flex-grow: 1;
+    }
+
+    .number {
+        align-self: flex-end;
+        display: initial;
+        font-size: 15px;
+        min-height: 20px;
+    }
+
+    .portrait {
+        width: 190mm;
+        height: 276mm;
+    }
+
+    .landscape {
+        width: 276mm;
+        height: 188mm;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    body {
+        background: none;
+        -ms-zoom: 1.665;
+    }
+
+    .portrait, .landscape {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .landscape {
+        margin-bottom: 10px;
+        transform-origin: 0 0;
+    }
 }
