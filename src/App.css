@@ -15,11 +15,16 @@
     text-align: center;
     background-color: pink;
     margin: 1px;
-    font-size: 16px;
 }
 
 .number {
     display: none;
+}
+
+@media not print {
+    .page {
+        font-size: 16px;
+    }
 }
 
 @media print {
