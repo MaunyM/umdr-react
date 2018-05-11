@@ -19,6 +19,7 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
         this.handleChange = this.handleChange.bind(this);
         this.handleTypeChange = this.handleTypeChange.bind(this);
         this.handleAuthorChange = this.handleAuthorChange.bind(this);
+        this.handleFontSizeChange = this.handleFontSizeChange.bind(this);
     }
 
     public render() {
@@ -33,6 +34,10 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
                     Auteur :
                     <textarea name="author" onChange={this.handleAuthorChange}/>
                 </label>)}
+                <label>
+                    Taille des lettres :
+                    <input name="name" onChange={this.handleFontSizeChange} value={this.props.message.fontSize}/>
+                </label>
                 <select onChange={this.handleTypeChange} value={this.props.message.type}>
                     <option value={MessageType.Small}>Small</option>
                     <option value={MessageType.Medium}>Medium</option>
@@ -44,12 +49,16 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
 
     protected handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
         this.setState({
-                message: {...this.state.message, content: event.target.value}
+                message: {
+                    ...this.state.message,
+                    content: event.target.value,
+                    fontSize: this.getFontSize(event.target.value, this.state.message.type)
+                }
             },
             () => this.props.onMessageChange(this.props.index, this.state.message)
         );
-
     }
+
 
     protected handleAuthorChange(event: ChangeEvent<HTMLTextAreaElement>) {
         this.setState({
@@ -57,14 +66,41 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
             },
             () => this.props.onMessageChange(this.props.index, this.state.message)
         );
-
     }
 
-    protected handleTypeChange(event: ChangeEvent<HTMLSelectElement>) {
+    protected handleFontSizeChange(event: ChangeEvent<HTMLInputElement>) {
         this.setState({
-                message: {...this.state.message, type: +event.target.value}
+                message: {...this.state.message, fontSize: +event.target.value}
             },
             () => this.props.onMessageChange(this.props.index, this.state.message)
         );
     }
+
+    protected handleTypeChange(event: ChangeEvent<HTMLSelectElement>) {
+        this.setState({
+                message: {
+                    ...this.state.message,
+                    fontSize: this.getFontSize(this.state.message.content, +event.target.value),
+                    type: +event.target.value
+                }
+            },
+            () => this.props.onMessageChange(this.props.index, this.state.message)
+        );
+    }
+
+    protected getFontSize = (content: string, type: MessageType) => {
+        if (type === MessageType.Large) {
+            return 800;
+        }
+        if (type === MessageType.Medium) {
+            return 350;
+        }
+        if (content.length > 130) {
+            return 30
+        }
+        if (content.length > 58) {
+            return 50
+        }
+        return 70
+    };
 }
