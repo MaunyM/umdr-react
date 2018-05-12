@@ -8,6 +8,7 @@ import {SmallMessageComponent} from './SmalllMessage';
 
 const smallLetters = [',', ':', '!', '\''];
 
+
 interface IProps {
     message: Message;
 }
@@ -38,6 +39,7 @@ export class PanneauComponent extends React.Component<IProps> {
         return message
             .split('')
             .filter((letter: string) => letter !== ' ') // On supprime les espace
+            .filter((letter: string) => letter !== ',') // On supprime les virgules
             .map((letter: string) => letter.toUpperCase()) // on met tout en majuscule
             .reduce((acc, value) => {
                 if (!smallLetters.find(letter => letter === value)) {
