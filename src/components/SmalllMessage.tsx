@@ -10,7 +10,7 @@ interface IProps {
 export class SmallMessageComponent extends React.Component<IProps> {
     public render() {
         return (
-            <div className={'small'}>
+            <div className={'small half-landscape'}>
                 <div className={`titre`}>
                     <span className={'expression'}>Affichage d'opinion</span>
                 </div>

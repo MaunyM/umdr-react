@@ -74,6 +74,11 @@
         height: 188mm;
     }
 
+    .half-landscape {
+        width: 190mm;
+        height: 139mm;
+    }
+
     .no-print {
         display: none;
     }
@@ -83,7 +88,7 @@
         -ms-zoom: 1.665;
     }
 
-    .portrait, .landscape {
+    .portrait, .landscape,  .half-landscape{
         margin: 0;
         padding: 0;
         border: none;
