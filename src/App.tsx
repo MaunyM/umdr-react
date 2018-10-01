@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 
-import {Button, Divider, Grid, Icon, Menu, Segment} from 'semantic-ui-react';
+import {Button, Divider, Grid, Icon, Menu, Popup, Segment} from 'semantic-ui-react';
 
 import {HelpComponent} from './components/Help';
 import {MessageSubmissionComponent} from './components/Message-submission';
@@ -38,13 +38,18 @@ class App extends React.Component<{}, IState> {
     public render() {
         return (
             <div className="App">
-                <Menu className={'no-print'} >
+                <Menu className={'no-print'}>
                     <Menu.Item header={true} className={'pink'}>Messages à caractères associatifs</Menu.Item>
                     <Menu.Menu position='right'>
                         <Menu.Item>
-                            <Button icon={true} onClick={this.clickHelp}>
-                                <Icon name='help'/>
-                            </Button>
+                            <Popup
+                                trigger={<a href={'https://github.com/MaunyM/umdr-react'} target={'_blank'}><Icon name='github' link={true}/></a>}
+                                content='Les sources sont libres et disponibles sur Github'
+                                position='left center'
+                            />
+                        </Menu.Item>
+                        <Menu.Item>
+                            <Icon name='help' onClick={this.clickHelp} link={true}/>
                         </Menu.Item>
                     </Menu.Menu>
                 </Menu>

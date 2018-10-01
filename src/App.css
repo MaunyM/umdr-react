@@ -5,9 +5,14 @@
     src: url("BRLNSR.TTF");
 }
 
-.App {
-    background-color: rgba(0,0,0,.05);
+a {
+    color: black;
 }
+
+.App {
+    background-color: rgba(0, 0, 0, .05);
+}
+
 .panneau {
     display: flex;
     flex-flow: row;
@@ -35,9 +40,10 @@
 }
 
 @media print {
-    .App{
+    .App {
         background-color: white;
     }
+
     .break {
         page-break-after: always;
     }
