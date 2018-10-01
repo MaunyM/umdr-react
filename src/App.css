@@ -5,6 +5,9 @@
     src: url("BRLNSR.TTF");
 }
 
+.App {
+    background-color: rgba(0,0,0,.05);
+}
 .panneau {
     display: flex;
     flex-flow: row;
@@ -21,6 +24,10 @@
     display: none;
 }
 
+.ui.menu .item.pink, .pink {
+    background-color: pink;
+}
+
 @media not print {
     .page {
         font-size: 16px;
@@ -28,6 +35,9 @@
 }
 
 @media print {
+    .App{
+        background-color: white;
+    }
     .break {
         page-break-after: always;
     }
@@ -79,7 +89,7 @@
         height: 139mm;
     }
 
-    .no-print {
+    .ui.no-print.menu, .no-print {
         display: none;
     }
 
@@ -88,7 +98,7 @@
         -ms-zoom: 1.665;
     }
 
-    .portrait, .landscape,  .half-landscape{
+    .portrait, .landscape, .half-landscape {
         margin: 0;
         padding: 0;
         border: none;

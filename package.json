@@ -5,7 +5,8 @@
   "repository": "github:MaunyM/umdr-react",
   "dependencies": {
     "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "react-dom": "^16.3.1",
+    "semantic-ui-react": "^0.82.5"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",

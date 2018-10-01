@@ -12,7 +12,10 @@ export class SmallMessageComponent extends React.Component<IProps> {
         return (
             <div className={'small half-landscape'}>
                 <div className={`titre`}>
-                    <span className={'expression'}>Affichage d'opinion</span>
+                    {this.props.message.description ?
+                        <span className={'expression'}>{this.props.message.description}</span> :
+                        <span className={'expression-vide'}/>
+                    }
                 </div>
                 <div className={'message'}>
                     <div

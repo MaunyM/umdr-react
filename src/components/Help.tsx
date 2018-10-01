@@ -1,9 +1,10 @@
 import * as React from 'react';
+import {Segment} from 'semantic-ui-react';
 
 export class HelpComponent extends React.Component<{}, object> {
     public render() {
         return (
-            <div className={'no-print'}>
+            <Segment className={'no-print'}>
                 Sous Chrome :
                 <ol>
                     <li> On tape le message</li>
@@ -13,7 +14,7 @@ export class HelpComponent extends React.Component<{}, object> {
                     <li> On choisit "Enregistrer au format PDF"</li>
                     <img src="enregistrer.png" style={{width: '415px'}}/>
                 </ol>
-            </div>
+            </Segment>
         )
     }
 }

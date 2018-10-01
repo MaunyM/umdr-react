@@ -1,5 +1,8 @@
 import * as React from 'react';
 import {ChangeEvent} from 'react';
+
+import {Form, Grid, Input, TextArea} from 'semantic-ui-react';
+
 import {Message, MessageType} from '../types';
 
 interface IProps {
@@ -24,30 +27,55 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
 
     public render() {
         return (
-            <form className={'no-print'}>
-                <label>
-                    Message :
-                    <textarea name="name" onChange={this.handleChange}/>
-                </label>
-
-                {this.state.message.type === MessageType.Small && (<label>
-                    Auteur :
-                    <textarea name="author" onChange={this.handleAuthorChange}/>
-                </label>)}
-                <label>
-                    Taille des lettres :
-                    <input name="name" onChange={this.handleFontSizeChange} value={this.props.message.fontSize}/>
-                </label>
-                <select onChange={this.handleTypeChange} value={this.props.message.type}>
-                    <option value={MessageType.Small}>Small</option>
-                    <option value={MessageType.Medium}>Medium</option>
-                    <option value={MessageType.Large}>Large</option>
-                </select>
-            </form>
+            <Grid.Row columns={6}>
+                <Grid.Column>
+                    <Form.Field>
+                        <select onChange={this.handleTypeChange} value={this.props.message.type}>
+                            <option value={MessageType.Small}>Small</option>
+                            <option value={MessageType.Medium}>Medium</option>
+                            <option value={MessageType.Large}>Large</option>
+                        </select>
+                    </Form.Field>
+                </Grid.Column>
+                <Grid.Column>
+                    <Form.Field>
+                        <label>
+                            Message :
+                        </label>
+                        <TextArea name="name" onChange={this.handleChange}/>
+                    </Form.Field>
+                </Grid.Column>
+                <Grid.Column>
+                    <Form.Field>
+                        <label>
+                            Taille des lettres :
+                        </label>
+                        <Input name="name" onChange={this.handleFontSizeChange} value={this.props.message.fontSize}/>
+                    </Form.Field>
+                </Grid.Column>
+                {this.state.message.type === MessageType.Small && (
+                    <Grid.Column>
+                        <Form.Field>
+                            <label>
+                                Auteur :
+                            </label>
+                            <Input name="author" onChange={this.handleAuthorChange}/>
+                        </Form.Field>
+                    </Grid.Column>)}
+                {this.state.message.type === MessageType.Small && (
+                    <Grid.Column>
+                        <Form.Field>
+                            <label>
+                                Description :
+                            </label>
+                            <Form.Input name="description" value={this.props.message.description} onChange={this.handleDescriptionChange} />
+                        </Form.Field>
+                    </Grid.Column>)}
+            </Grid.Row>
         )
     }
 
-    protected handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
+    protected handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         this.setState({
                 message: {
                     ...this.state.message,
@@ -57,16 +85,24 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
             },
             () => this.props.onMessageChange(this.props.index, this.state.message)
         );
-    }
+    };
 
 
-    protected handleAuthorChange(event: ChangeEvent<HTMLTextAreaElement>) {
+    protected handleAuthorChange(event: ChangeEvent<HTMLInputElement>) {
         this.setState({
                 message: {...this.state.message, author: event.target.value}
             },
             () => this.props.onMessageChange(this.props.index, this.state.message)
         );
     }
+
+    protected handleDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+        this.setState({
+                message: {...this.state.message, description: event.target.value}
+            },
+            () => this.props.onMessageChange(this.props.index, this.state.message)
+        );
+    };
 
     protected handleFontSizeChange(event: ChangeEvent<HTMLInputElement>) {
         this.setState({

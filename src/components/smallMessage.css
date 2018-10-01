@@ -6,6 +6,7 @@
 }
 
 .titre {
+    min-height: 60px;
     font-size: 16px;
     display: flex;
     justify-content: center;
@@ -17,10 +18,15 @@
 }
 
 .expression {
+     margin: 10px;
+     padding: 10px;
+     background-color: black;
+     color: white;
+ }
+
+.expression-vide {
     margin: 10px;
     padding: 10px;
-    background-color: black;
-    color: white;
 }
 
 .social {
