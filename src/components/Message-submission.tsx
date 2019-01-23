@@ -27,7 +27,7 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
 
     public render() {
         return (
-            <Grid.Row columns={6}>
+            <Grid.Row columns={7}>
                 <Grid.Column>
                     <Form.Field>
                         <select onChange={this.handleTypeChange} value={this.props.message.type}>
@@ -66,9 +66,20 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
                     <Grid.Column>
                         <Form.Field>
                             <label>
+                                Taille de l'auteur :
+                            </label>
+                            <Input name="author" onChange={this.handleAuthorFontSizeChange}
+                                   value={this.props.message.authorFontSize}/>
+                        </Form.Field>
+                    </Grid.Column>)}
+                {this.state.message.type === MessageType.Small && (
+                    <Grid.Column>
+                        <Form.Field>
+                            <label>
                                 Description :
                             </label>
-                            <Form.Input name="description" value={this.props.message.description} onChange={this.handleDescriptionChange} />
+                            <Form.Input name="description" value={this.props.message.description}
+                                        onChange={this.handleDescriptionChange}/>
                         </Form.Field>
                     </Grid.Column>)}
             </Grid.Row>
@@ -107,6 +118,14 @@ export class MessageSubmissionComponent extends React.Component<IProps, IState> 
     protected handleFontSizeChange(event: ChangeEvent<HTMLInputElement>) {
         this.setState({
                 message: {...this.state.message, fontSize: +event.target.value}
+            },
+            () => this.props.onMessageChange(this.props.index, this.state.message)
+        );
+    }
+
+    protected handleAuthorFontSizeChange = (event: ChangeEvent<HTMLInputElement>) => {
+        this.setState({
+                message: {...this.state.message, authorFontSize: +event.target.value}
             },
             () => this.props.onMessageChange(this.props.index, this.state.message)
         );

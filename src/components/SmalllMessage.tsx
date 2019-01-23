@@ -20,7 +20,7 @@ export class SmallMessageComponent extends React.Component<IProps> {
                 <div className={'message'}>
                     <div
                         className={`texte`}>{this.props.message.content}</div>
-                    <div className={'auteur'}>{this.props.message.author}</div>
+                    <div className={'auteur'} style={{fontSize: this.props.message.authorFontSize}}>{this.props.message.author}</div>
                 </div>
                 <div className={'liens'}>
                     <div className={'social'}>
